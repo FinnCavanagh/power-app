@@ -1,14 +1,20 @@
-var express = require('express'),
-    router  = express.Router();
+var express  = require('express');
+var router   = express.Router();
+var passport = require("passport");
 
-//here pull in controllers
-// var usersController = require('../controllers/usersController');
+var usersController = require('../controllers/usersController');
+var authenticationsController = require('../controllers/authenticationsController');
 
+router.post('/login', authenticationsController.login);
+router.post('/register', authenticationsController.register);
 
+router.route('/users')
+  .get(usersController.usersIndex)
 
-// here define routes e.g. :
+router.route('/users/:id')
+  .get(usersController.usersShow)
+  .put(usersController.usersUpdate)
+  .patch(usersController.usersUpdate)
+  .delete(usersController.usersDelete)
 
-// router.route('/')
-//   .get(usersController.usersIndex)
-
-module.exports = router;
+module.exports = router
