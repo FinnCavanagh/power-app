@@ -24,21 +24,31 @@ router.route('/users/:id')
   .delete(usersController.usersDelete)
 
 router.route('/recipient')
-  .get(recipientsController.recipientsShow)
+  .get(recipientsController.recipientsIndex)
   .post(recipientsController.recipientsCreate)
 
+router.route('/recipient/:id')
+  .get(recipientsController.recipientsShow)
+  // .put(recipientsController.recipientsUpdate)
+  // .delete(recipientsController.recipientsDelete)
+
 router.route('/powers')
-  .get(powersController.powersIndex)
+  .get(powersController.powersIndex);
+  // .post(powersController.powersCreate)
 
 router.route('/powers/:id')
-  .get(powersController.powersShow)
-  .post(powersController.powersShow)
-  .put(powersController.powersUpdate)
-  .patch(powersController.powersUpdate)
+  .get(powersController.powersShow);
+  // .put(powersController.powersUpdate)
+  // .patch(powersController.powersUpdate)
 
-router.route('/powers/:id/send')
-  .get(powersController.powersShow)
-  .post(powersController.powersShow)
+router.route('/powers/random/:tag')
+  .get(powersController.getRandomByTag);
+
+// router.route('/powers/:id/send')
+//   .get(powersController.powersShow)
+//   .post(powersController.powersShow)
 
 
 module.exports = router;
+
+

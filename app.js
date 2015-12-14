@@ -14,6 +14,8 @@ var app            = express();
 var config         = require('./config/config');
 var User           = require('./models/user');
 var Power          = require('./models/power');
+var Recipients     = require('./models/recipient');
+
 var secret         = require('./config/config').secret;
 
 mongoose.connect(config.database);

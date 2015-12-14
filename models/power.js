@@ -8,8 +8,10 @@
 
 var mongoose = require("mongoose");
 
-var powerSchema = mongoose.Schema({ 
-   category: [String]
+var powerSchema = new mongoose.Schema({ 
+   tags: [ String ], 
+   text: String,
+   citation: String
  });
 
 

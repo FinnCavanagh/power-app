@@ -1,9 +1,5 @@
-router.route('/recipient')
-  .get(recipientsController.recipientsShow)
-  .post(recipientsController.recipientsCreate)
 
-
-  var Recipient = require('../models/recipient');
+var Recipient = require('../models/recipient');
 
   function recipientsIndex(req, res){
     Recipient.find(function(err, recipients){
@@ -19,14 +15,22 @@ router.route('/recipient')
     });
   };
 
+  function recipientsUpdate(req, res) {
+
+  };
+
   function recipientsCreate(req, res){
     var recipient = new Recipient({
       name: req.body.name,
+      email: req.body.email,
+      twitter: req.body.email,
+      phone_number: req.body.phone_number
     });
-    Recipient.save(function(err){
-      if(err) return res.render('error', {message: 'Could not add recipient ' + (err) });
-      res.status(201).json({ recipient: recipient });
-    });
+    console.log("req recipients",req.body.name);
+    // Recipient.save(function(err){
+    //   if(err) return res.render('error', {message: 'Could not add recipient ' + (err) });
+    //   res.status(201).json({ recipient: recipient });
+    // });
   };
 
 
@@ -34,4 +38,5 @@ router.route('/recipient')
     recipientsIndex:  recipientsIndex,
     recipientsShow:   recipientsShow,
     recipientsCreate: recipientsCreate,
+    recipientsUpdate: recipientsUpdate
   }
