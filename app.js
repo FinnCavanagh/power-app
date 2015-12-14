@@ -14,7 +14,7 @@ var app            = express();
 var config         = require('./config/config');
 var User           = require('./models/user');
 var Power          = require('./models/power');
-var Recipients     = require('./models/recipient');
+var Recipients     = require('./models/power');
 
 var secret         = require('./config/config').secret;
 
@@ -42,20 +42,20 @@ app.use(morgan('dev'));
 app.use(cors());
 app.use(passport.initialize());
 
-app.use('/api', expressJWT({ secret: secret })
-  .unless({
-    path: [
-      { url: '/api/login', methods: ['POST'] },
-      { url: '/api/register', methods: ['POST'] }
-    ]
-  }));
+// app.use('/api', expressJWT({ secret: secret })
+//   .unless({
+//     path: [
+//       { url: '/api/login', methods: ['POST'] },
+//       { url: '/api/register', methods: ['POST'] }
+//     ]
+//   }));
 
-app.use(function (err, req, res, next) {
-  if (err.name === 'UnauthorizedError') {
-    return res.status(401).json({message: 'Unauthorized request.'});
-  }
-  next();
-});
+// app.use(function (err, req, res, next) {
+//   if (err.name === 'UnauthorizedError') {
+//     return res.status(401).json({message: 'Unauthorized request.'});
+//   }
+//   next();
+// });
 
 var routes = require('./config/routes');
 app.use("/api", routes);

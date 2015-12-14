@@ -3,7 +3,7 @@ var Power   = require('../models/power');
 function powersIndex(req, res) {
   Power.find(function(err, powers){
     if (err) return res.status(404).json({message: 'Something went wrong.'});
-    res.status(200).json({ powers: powers });
+    res.status(200).json(powers);
   });
 }
 
@@ -11,7 +11,7 @@ function powersIndex(req, res) {
 function powersShow(req, res){
   Power.findById(req.params.id, function(err, power){
     if (err) return res.status(404).json({message: 'Something went wrong.'});
-    res.status(200).json({ powers: powers });
+    res.status(200).json(powers);
   });
 }
 
@@ -23,7 +23,7 @@ function getRandomByTag(req, res){
 
     var randomIndex = Math.floor(Math.random() * powers.length);
 
-    res.status(200).json({ power: powers[randomIndex] });
+    res.status(200).json(powers[randomIndex]);
   });
 }
 
