@@ -5,7 +5,11 @@ var userSchema = new mongoose.Schema({
   local: {
     username: { type: String },
     fullname: { type: String },
+    phone_number: { type: String },
     image: { type: String },
+    twitter_handle: { type: String },
+    contacts: [{ 
+      type: String }], 
     email: { type: String, unique: true, required: true },
     password: { type: String, required: true }
   }
@@ -20,3 +24,4 @@ userSchema.methods.validPassword = function(password) {
 }
 
 module.exports = mongoose.model("User", userSchema);
+

@@ -13,6 +13,7 @@ var app            = express();
 
 var config         = require('./config/config');
 var User           = require('./models/user');
+var Power          = require('./models/power');
 var secret         = require('./config/config').secret;
 
 mongoose.connect(config.database);
@@ -26,6 +27,11 @@ app.use(methodOverride(function(req, res){
     return method
   }
 }));
+
+// app.use(function (req, res, next) {
+//   global.currentUser = req.user;
+//   next();
+// });
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -51,6 +57,7 @@ app.use(function (err, req, res, next) {
 
 var routes = require('./config/routes');
 app.use("/api", routes);
+// console.log('Something is happening.');
 
 console.log('here on 3000')
 app.listen(3000);

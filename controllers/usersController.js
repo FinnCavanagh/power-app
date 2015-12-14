@@ -37,6 +37,11 @@ function usersDelete(req, res){
   });
 }
 
+function getLogout(req, res) {
+  req.logout();
+  res.redirect('/');
+}
+
 module.exports = {
   usersIndex:  usersIndex,
   usersShow:   usersShow,
