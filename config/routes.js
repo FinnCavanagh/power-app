@@ -23,11 +23,11 @@ router.route('/users/:id')
   .patch(usersController.usersUpdate)
   .delete(usersController.usersDelete)
 
-router.route('/recipient')
+router.route('/recipients')
   .get(recipientsController.recipientsIndex)
   .post(recipientsController.recipientsCreate)
 
-router.route('/recipient/:id')
+router.route('/recipients/:id')
   .get(recipientsController.recipientsShow)
   // .put(recipientsController.recipientsUpdate)
   // .delete(recipientsController.recipientsDelete)
