@@ -57,6 +57,7 @@ app.use(passport.initialize());
 //   next();
 // });
 
+
 var routes = require('./config/routes');
 app.use("/api", routes);
 // console.log('Something is happening.');

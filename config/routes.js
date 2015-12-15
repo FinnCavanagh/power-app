@@ -7,6 +7,7 @@ var authenticationsController = require('../controllers/authenticationsControlle
 var powersController = require('../controllers/powersController');
 var powerboxesController = require('../controllers/powerboxesController');
 var recipientsController = require('../controllers/recipientsController');
+var categoriesController = require('../controllers/categoriesController');
 
 router.post('/login', authenticationsController.login);
 router.post('/register', authenticationsController.register);
@@ -41,8 +42,19 @@ router.route('/powers/:id')
   // .put(powersController.powersUpdate)
   // .patch(powersController.powersUpdate)
 
+
 router.route('/powers/random/:tag')
   .get(powersController.getRandomByTag);
+
+router.route('/powers/categories')
+  .get(categoriesController.categoriesIndex);
+
+router.route('/categories/:id')
+  .get(categoriesController.categoriesShow);
+
+router.route('/categories')
+  .get(categoriesController.categoriesIndex);
+
 
 // router.route('/powers/:id/send')
 //   .get(powersController.powersShow)
