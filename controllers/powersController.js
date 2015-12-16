@@ -1,5 +1,8 @@
 var Power   = require('../models/power');
 
+var twilio = require('twilio')(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
+var twilioNumber = process.env.TWILIO_NUMBER;
+
 function powersIndex(req, res) {
   Power.find(function(err, powers){
     if (err) return res.status(404).json({message: 'Something went wrong.'});
@@ -25,6 +28,19 @@ function getRandomByTag(req, res){
 
     res.status(200).json(powers[randomIndex]);
   });
+}
+
+function sendSms(req, res) {
+  console.log(req.body);
+  twilio.messages.create({
+    body: req.body.message,
+    to: req.body.recipient,
+    from: twilioNumber
+  }, function(err) {
+    console.log(err);
+    if(err) return res.status(500).json({ error: err });
+    res.status(200).json({ message: "Message sent" });
+  })
 }
 
 
@@ -65,7 +81,8 @@ function getRandomByTag(req, res){
 module.exports = {
   powersIndex:  powersIndex,
   powersShow:   powersShow,
-  getRandomByTag: getRandomByTag
+  getRandomByTag: getRandomByTag,
+  sendSms: sendSms
   // powersCreate: powersCreate
   // powersUpdate: powersUpdate,
   // powersDelete: powersDelete

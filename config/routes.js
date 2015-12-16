@@ -46,6 +46,9 @@ router.route('/powers/:id')
 router.route('/powers/random/:tag')
   .get(powersController.getRandomByTag);
 
+router.route('/powers/send-sms')
+  .post(powersController.sendSms);
+
 router.route('/powers/categories')
   .get(categoriesController.categoriesIndex);
 
