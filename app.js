@@ -15,6 +15,8 @@ var config         = require('./config/config');
 var User           = require('./models/user');
 var Power          = require('./models/power');
 var Recipients     = require('./models/power');
+var nodemailer = require("nodemailer");
+var sgTransport = require('nodemailer-sendgrid-transport');
 
 var secret         = require('./config/config').secret;
 
