@@ -31,10 +31,16 @@ function getRandomByTag(req, res){
 }
 
 function sendSms(req, res) {
+
   console.log(req.body);
+  // { text: 'aasfasdf',
+  //   citation: 'asfa',
+  //   phone_number: 'sdfasdfasdf' }
+
+
   twilio.messages.create({
-    body: req.body.message,
-    to: req.body.recipient,
+    body: req.body.text + "by "+ req.body.citation,
+    to: req.body.phone_number,
     from: twilioNumber
   }, function(err) {
     console.log(err);
@@ -44,16 +50,18 @@ function sendSms(req, res) {
 }
 
 
-// function powersCreate(req, res){
-//   var power = new Power({
-//     category: req.body.category,
-//     content: req.body.content
-//   });
-//   power.save(function(err){
-//     if(err) return res.render('error', {message: 'Could not write power ' + (err) });
-//     res.status(201).json({ power: power });
-//   });
-// }
+
+function savePowers(req, res){
+  console.log(req.body.tag);
+  var power = new Power({
+    tag: req.body.tag,
+    text: req.body.text
+  });
+  power.save(function(err){
+    if(err) return res.render('error', {message: 'Could not write power ' + (err) });
+    res.status(201).json({ power: power });
+  });
+}
 
 // function powersUpdate(req, res){
 //   Power.findById(req.params.id,  function(err, power) {
@@ -82,8 +90,7 @@ module.exports = {
   powersIndex:  powersIndex,
   powersShow:   powersShow,
   getRandomByTag: getRandomByTag,
-  sendSms: sendSms
-  // powersCreate: powersCreate
-  // powersUpdate: powersUpdate,
-  // powersDelete: powersDelete
+  sendSms: sendSms,
+  savePowers: savePowers
+ 
 }

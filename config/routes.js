@@ -30,18 +30,15 @@ router.route('/recipients')
 
 router.route('/recipients/:id')
   .get(recipientsController.recipientsShow)
-  // .put(recipientsController.recipientsUpdate)
-  // .delete(recipientsController.recipientsDelete)
 
 router.route('/powers')
   .get(powersController.powersIndex);
-  // .post(powersController.powersCreate)
 
 router.route('/powers/:id')
   .get(powersController.powersShow);
+  
   // .put(powersController.powersUpdate)
   // .patch(powersController.powersUpdate)
-
 
 router.route('/powers/random/:tag')
   .get(powersController.getRandomByTag);
@@ -51,6 +48,9 @@ router.route('/powers/send-sms')
 
 router.route('/powers/categories')
   .get(categoriesController.categoriesIndex);
+
+router.route('/powers/powerbox')
+  .post(powersController.savePowers);
 
 router.route('/categories/:id')
   .get(categoriesController.categoriesShow);
