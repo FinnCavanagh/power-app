@@ -37,7 +37,7 @@ function login(req, res, next) {
 
     return res.status(200).json({
       success: true,
-      message: 'Hello Finn!',
+      message: 'Hey! Give Some Power',
       token: token,
       user: user
     });
