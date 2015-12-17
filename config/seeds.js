@@ -5,10 +5,9 @@ mongoose.connect(config.database);
 
 var Category = require("../models/category");
 var categories = [
-  "acceptance",
-  "inspiration",
+  "lust",
+  "beauty",
   "smart",
-  "understanding",
   "wise",
   "british",
   "humor",
