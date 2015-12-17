@@ -22,6 +22,7 @@ function powersShow(req, res){
 function getRandomByTag(req, res){
   console.log(req.params);
   Power.find({ tags: req.params.tag }, function(err, powers){
+    console.log(powers)
     if (err) return res.status(404).json({message: 'Something went wrong.'});
 
     var randomIndex = Math.floor(Math.random() * powers.length);
