@@ -7,24 +7,17 @@ var Category = require("../models/category");
 var categories = [
   "acceptance",
   "inspiration",
-  "inspirational",
   "smart",
   "understanding",
   "wise",
   "british",
   "humor",
-  "science-fiction",
-  "social-commentary",
   "thumb",
   "towel",
-  "simon_bolivar-s_labyrinth",
-  "fred-weasley",
-  "george-weasley",
   "hell",
   "mischief",
   "peeves",
   "umbridge",
-  "brotherhood-of-man"
 ]
 
 counter = 0
