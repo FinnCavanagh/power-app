@@ -65,4 +65,4 @@ app.use("/api", routes);
 // console.log('Something is happening.');
 
 console.log('here on 3000')
-app.listen(3000);
+app.listen(config.port);
