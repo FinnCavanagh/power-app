@@ -5,18 +5,21 @@ mongoose.connect(config.database);
 
 var Category = require("../models/category");
 var categories = [
-  "lust",
+  "desire",
   "beauty",
   "smart",
   "wise",
   "british",
   "humor",
   "thumb",
-  "towel",
+  "wine",
+  "beer"
   "hell",
+  "fun"
+  "play"
   "mischief",
   "peeves",
-  "umbridge",
+  "fate",
 ]
 
 counter = 0
@@ -33,3 +36,4 @@ Category.remove({}, function(){
     })
   })
 })
+
