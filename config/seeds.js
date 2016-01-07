@@ -13,13 +13,13 @@ var categories = [
   "humor",
   "thumb",
   "wine",
-  "beer"
+  "beer",
   "hell",
-  "fun"
-  "play"
+  "fun",
+  "play",
   "mischief",
   "peeves",
-  "fate",
+  "fate"
 ]
 
 counter = 0
